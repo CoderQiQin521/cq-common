@@ -1,2 +1,2 @@
-git remote add origin git@github.com:CoderQiQin521/cq-util.git
-git push -u origin master
+如果是 webpack 环境开发 不要打包,直接引用
+如果是传统开发需要 babel 转换成功 es5, 不使用`request模块`
