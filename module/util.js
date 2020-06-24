@@ -23,11 +23,12 @@ export const random = (min, max) =>
   Math.floor(Math.random() * (max - min + 1) + min)
 
 /**
- * @method 节流函数
+ * @method 节流函数 指连续触发事件但是在 n 秒中只执行一次函数。即 2n 秒内执行 2 次... 。节流如字面意思，会稀释函数的执行频率。(时间戳版,定时器版)
  * @param {Function} fun 必传 要执行的逻辑
  * @param {Number} t 必传 单位毫秒，每隔多长时间执行一次fun
  * @param {Number} mustRun 必传 单位毫秒，该时间内必执行一次fun
  * @param {Boolean} denyLast 可选 节流结束后是否执行一次fun，true表示执行，false表示不执行
+ * 参考: https://www.cnblogs.com/cc-freiheit/p/10827372.html
  */
 export const throttle = (fun, t, mustRun, denyLast) => {
   var timer = null
@@ -51,8 +52,22 @@ export const throttle = (fun, t, mustRun, denyLast) => {
     }
   }
 }
+
+export const throttle2 = (fun, wait) => {
+  let timer
+  return function () {
+    let args = arguments
+    if (!timer) {
+      timer = setTimeout(() => {
+        timer = null
+        fun.apply(this, args)
+      }, wait)
+    }
+  }
+}
+
 /**
- * @method 防抖函数
+ * @method 防抖函数 短时间内多次触发同一事件，只执行最后一次，或者只执行最开始的一次，中间的不执行。
  * @param {Function} fun 必传 要执行的逻辑
  * @param {Number} t 必传 单位毫秒，表示间隔多久调用fun
  * @param {Boolean} immediate 可选 当为true时，表示防抖开始时执行一次fun，防抖停止时不执行；为false时，表示防抖开始时不执行fun
@@ -73,5 +88,19 @@ export const debounce = (fun, t, immediate) => {
     if (callNow) {
       fun.apply(that, arguments)
     }
+  }
+}
+
+export const debounce2 = (fun, wait) => {
+  let timer
+  return function () {
+    let context = this,
+      args = arguments
+
+    if (timer) clearTimeout(timer)
+
+    timer = setTimeout(() => {
+      fun.apply(this, args)
+    }, wait)
   }
 }
