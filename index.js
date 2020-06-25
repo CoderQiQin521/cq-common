@@ -2,7 +2,7 @@
  * @Author: coderqiqin@aliyun.com
  * @Date: 2020-06-24 16:33:32
  * @Last Modified by: CoderQiQin
- * @Last Modified time: 2020-06-24 17:19:20
+ * @Last Modified time: 2020-06-25 19:33:56
  */
 import * as browser from './module/browser'
 import * as util from './module/util'
@@ -18,5 +18,5 @@ TODO:
 3. 后期可以用ts重构
 4. 一类的方法可以抽象成class
 5. 发布npm&github维护
-6. 使用babel打包 `"compile": "babel -d lib/ src/",`
+6. ?使用babel打包 `"compile": "babel -d lib/ src/",`
 */
