@@ -156,3 +156,40 @@ export const shuffle = (arr) => {
   }
   return arr
 }
+
+/**
+ * @description  计算函数执行时间
+ * @author coderqiqin@aliyun.com
+ * @date 2020-06-25
+ * @export
+ * @param {function} fun
+ * @returns {string}
+ */
+export const timeTaken = (fun) => {
+  console.time('timeTaken')
+  const res = fun()
+  console.timeEnd('timeTaken')
+  return res
+}
+
+/**
+ * @description  平滑滚动至顶部
+ * @author coderqiqin@aliyun.com
+ * @date 2020-06-25
+ * @export
+ */
+export const scrollToTop = () => {
+  const c = document.documentElement.scrollTop || document.body.scrollTop
+  if (c > 0) {
+    window.requestAnimationFrame(scrollToTop)
+    window.scrollTo(0, c - c / 8)
+  }
+}
+
+/**
+ * @description  检查是否为浏览器环境
+ * @author coderqiqin@aliyun.com
+ * @date 2020-06-25
+ * @export
+ */
+const isBrowser = () => ![typeof window, typeof document].includes('undefined')
