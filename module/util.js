@@ -114,7 +114,6 @@ export const debounce2 = (fun, wait) => {
  * @param {string} format 返回格式
  * @returns {string}
  */
-
 export const formatDate = (date, format = 'yyyy-MM-dd hh:mm:ss') => {
   let o = {
     'M+': date.getMonth() + 1,
@@ -123,7 +122,6 @@ export const formatDate = (date, format = 'yyyy-MM-dd hh:mm:ss') => {
     'm+': date.getMinutes(),
     's+': date.getSeconds(),
   }
-  console.log('o: ', o)
   if (/(y+)/.test(format)) {
     format = format.replace(
       RegExp.$1,
@@ -140,4 +138,21 @@ export const formatDate = (date, format = 'yyyy-MM-dd hh:mm:ss') => {
     }
   }
   return format
+}
+
+/**
+ * @description  洗牌算法
+ * @author coderqiqin@aliyun.com
+ * @date 2020-06-25
+ * @export
+ * @param {array} arr
+ * @returns {array}
+ */
+export const shuffle = (arr) => {
+  let len = arr.length
+  while (len) {
+    const i = Math.floor(Math.random() * len--)
+    ;[arr[len], arr[i]] = [arr[i], arr[len]]
+  }
+  return arr
 }
