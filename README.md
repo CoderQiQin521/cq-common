@@ -1,3 +1,9 @@
+## 引用
+
+`import { bower,util,request,wx } from 'cq-common'`(推荐)
+
+`import * as xxx from 'cq-common'`
+
 ## browser 浏览器操作
 
 localstorage,cookie
